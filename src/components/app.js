@@ -1,9 +1,20 @@
-import React, { Component } from 'react';
+//@flow
+import * as React from 'react';
 
-export default class App extends Component {
+import Header from './header';
+
+type Props = {
+  children:? React.Node;
+}
+class App extends React.Component<Props> {
   render() {
     return (
-      <div>React simple starter</div>
+      <div>
+        <Header />
+        { this.props.children }
+      </div>
     );
   }
 }
+
+export default App;
