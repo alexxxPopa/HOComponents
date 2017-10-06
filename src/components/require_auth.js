@@ -12,9 +12,20 @@ export default function (ComposedComponent: React.Component) {
       router: React.PropTypes.object
     }
 
+    componentWillMount() {
+      if (!this.props.authenticated) {
+        this.context.router.history.push('/')
+      }
+    }
+
+    componentWillUpdate(nextProps: Props) {
+      if(!nextProps.authenticated) {
+        this.context.router.history.push('/')
+      }
+    }
+
     render() {
-      console.log(this.context)
-      return <ComposedComponent {...this.props}/>
+      return <ComposedComponent {...this.props} />
     }
   }
 
